@@ -1,26 +1,26 @@
-# Philosophers - Problema de los Filósofos
+# Philosophers - Philosophers' Problem
 
-El proyecto **philosophers** es una implementación del clásico problema de los filósofos comensales, que aborda la sincronización y la concurrencia en sistemas informáticos. Este problema es un buen ejemplo para aprender sobre el uso de hilos y la gestión de recursos compartidos.
+The **philosophers** project is an implementation of the classic dining philosophers problem, which addresses synchronization and concurrency in computer systems. This problem is a good example to learn about thread usage and shared resource management.
 
-## Objetivo
+## Objective
 
-El objetivo es simular a un grupo de filósofos sentados a una mesa, donde cada uno alterna entre pensar y comer. Para comer, un filósofo necesita dos tenedores (uno a su izquierda y otro a su derecha). El reto es evitar condiciones de carrera y garantizar que todos los filósofos puedan comer sin entrar en un estado de inanición.
+The goal is to simulate a group of philosophers sitting at a table, where each alternates between thinking and eating. To eat, a philosopher needs two forks (one on their left and one on their right). The challenge is to avoid race conditions and ensure that all philosophers can eat without falling into a state of starvation.
 
-## Requisitos
+## Requirements
 
-- Conocimientos de programación en **C**.
-- Familiaridad con la programación de hilos (pthreads).
+- Knowledge of **C** programming.
+- Familiarity with thread programming (pthreads).
 
-## Compilación
+## Compilation
 
-Para compilar el proyecto, ejecuta el siguiente comando en el directorio raíz:
+To compile the project, run the following command in the root directory:
 
 ```bash
 make
 ```
 
-## Ejecución
+## Execution
 
 ```bash
-./philo <número de filósofos> <tiempo de muerte> <tiempo de comer> <tiempo de pensar> [número de comidas]
+./philo <number of philosophers> <time to die> <time to eat> <time to think> [number of meals]
 ```
