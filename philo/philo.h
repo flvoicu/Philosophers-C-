@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flvoicu <flvoicu@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: flvoicu <flvoicu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:02:35 by flvoicu           #+#    #+#             */
-/*   Updated: 2024/05/15 17:16:01 by flvoicu          ###   ########.fr       */
+/*   Updated: 2025/03/19 17:19:55 by flvoicu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+# define FIRST 1
+# define SECOND 2
 
 # include <pthread.h>
 # include <stdio.h>
@@ -21,29 +24,53 @@
 
 typedef struct s_philo
 {
+	int					max_philo;
 	int					philo_n;
-	long long			*last_eat;
-	long long			die;
-	long long			eat;
-	long long			sleep;
-	int					*times;
+	size_t				die;
+	size_t				eat;
+	size_t				sleep;
+	size_t				last_eat;
+	size_t				init_time;
+	int					times;
 	pthread_mutex_t		*fork_l;
 	pthread_mutex_t		*fork_r;
-	pthread_mutex_t		write;
+	pthread_mutex_t		*write;
+	pthread_mutex_t		*track;
+	pthread_mutex_t		*death;
 	int					*check;
+	int					*dead;
 }				t_philo;
 
 typedef struct s_vars
 {
-	char				**av;
-	pthread_mutex_t		*fork;
-	long long			*eat;
-	pthread_mutex_t 	write;
-	pthread_t			*thread;
-	t_philo				*philo;
-	int					*check;
-	int					*times;
+	pthread_mutex_t		fork;
+	int					check_mutex;
+	pthread_t			thread;
+	t_philo				philo;
 }				t_vars;
 
-#endif
+typedef struct s_aux
+{
+	int					philo_n;
+	int					check;
+	pthread_mutex_t		write;
+	int					write_check;
+	pthread_mutex_t		track;
+	int					track_check;
+	pthread_mutex_t		death;
+	int					death_check;
+	int					dead;
+	t_vars				*vars;
+}				t_aux;
 
+void	*philo_thread(void *arg);
+
+int		init(t_aux *aux, char **av);
+void	free_aux(t_aux *aux);
+
+long	ft_atoi(char *str, t_aux *aux);
+size_t	get_time(void);
+void	real_sleep(size_t time);
+size_t	write_message(char *message, t_philo *philo);
+
+#endif

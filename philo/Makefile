@@ -1,12 +1,15 @@
 NAME = philo
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=thread
 
 CC = gcc
 
 RM = rm -rf
 
-SRC =	philo.c
+SRC = 	philo.c\
+		thread.c\
+		utils.c\
+		init.c
 
 OBJ = $(SRC:.c=.o)
 
